@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services · OnEarth Agency</title>
+<meta name="description" content="OnEarth Agency builds websites, lead systems, Google authority and content for functional medicine practices. 6-month minimum. Performance clause included.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #9C5D3C;
+    --terracotta-light: #b8795a;
+    --terracotta-pale: #f5ebe3;
+    --olive: #6E6B41;
+    --olive-light: #8a8755;
+    --cream: #D1C7B5;
+    --cream-light: #EDE8DF;
+    --cream-pale: #F7F4EF;
+    --mustard: #B07E1E;
+    --mustard-light: #c99a3a;
+    --charcoal: #1C1712;
+    --charcoal-mid: #2a2118;
+    --white: #FAF8F4;
+    --text: #2a2118;
+    --text-mid: #4a3a2e;
+    --text-light: #7a6a5a;
+    --text-dimmer: #a09080;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); font-weight: 300; overflow-x: hidden; }
+
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 9999; }
+
+  * { cursor: none; }
+  .cursor { position: fixed; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: width 0.3s, height 0.3s; }
+  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(156,93,60,0.35); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.2rem 5rem; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,244,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(110,107,65,0.1); }
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-logo-main { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; line-height: 1; }
+  .nav-logo-sub { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 400; margin-top: 3px; }
+  .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-apply { background: var(--charcoal) !important; color: var(--white) !important; padding: 0.6rem 1.5rem; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
+  .nav-apply:hover { background: var(--terracotta) !important; }
+
+  /* PAGE HERO */
+  .page-hero { padding: 9rem 5rem 6rem; background: var(--white); position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 40%; background: var(--cream-pale); clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); }
+
+  .page-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.6s ease 0.2s both; position: relative; }
+  .page-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .page-h1 { font-family: 'Cormorant', serif; font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 300; color: var(--charcoal); line-height: 1.0; max-width: 700px; animation: fadeUp 0.7s ease 0.4s both; position: relative; }
+  .page-h1 em { font-style: italic; color: var(--terracotta); }
+
+  .page-intro { font-size: 0.95rem; line-height: 1.9; color: var(--text-light); max-width: 560px; margin-top: 2rem; font-weight: 300; animation: fadeUp 0.7s ease 0.6s both; position: relative; }
+
+  /* ENGAGEMENT MODEL */
+  .engagement { padding: 7rem 5rem; background: var(--olive-pale); }
+
+  .eng-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .eng-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .engagement-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+
+  .eng-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 3.5vw, 3.2rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 1.5rem; }
+  .eng-h2 em { font-style: italic; color: var(--mustard-light); }
+  .eng-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .eng-facts { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); }
+  .eng-fact { background: var(--white); padding: 1.6rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; transition: background 0.2s; }
+  .eng-fact:hover { background: var(--cream-pale); }
+  .eng-fact-icon { color: var(--terracotta); font-size: 0.9rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .eng-fact-title { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .eng-fact-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-light); font-weight: 300; }
+
+  /* CORE SERVICES */
+  .core-services { padding: 8rem 5rem; background: var(--white); }
+
+  .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: end; margin-bottom: 5rem; }
+
+  .services-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; }
+  .services-h2 em { font-style: italic; color: var(--terracotta); }
+  .services-intro { font-size: 0.9rem; line-height: 1.9; color: var(--text-light); font-weight: 300; }
+
+  .services-grid { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); }
+
+  .service-row { background: var(--white); display: grid; grid-template-columns: 280px 1fr auto; gap: 4rem; padding: 3rem 3rem; align-items: start; transition: background 0.25s; position: relative; overflow: hidden; }
+
+  .service-row::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--terracotta); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .service-row:hover { background: var(--cream-pale); }
+  .service-row:hover::before { transform: scaleY(1); }
+
+  .service-label-col {}
+  .service-num { font-family: 'Cormorant Upright', serif; font-size: 2.5rem; font-weight: 300; color: rgba(110,107,65,0.15); line-height: 1; margin-bottom: 0.5rem; transition: color 0.3s; }
+  .service-row:hover .service-num { color: rgba(156,93,60,0.25); }
+  .service-name { font-family: 'Cormorant', serif; font-size: 1.4rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .service-tag { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); font-weight: 500; }
+
+  .service-content {}
+  .service-title { font-size: 0.78rem; font-weight: 600; color: var(--charcoal); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .service-text { font-size: 0.85rem; line-height: 1.9; color: var(--text-light); font-weight: 300; }
+
+  .service-timing { text-align: right; flex-shrink: 0; padding-top: 0.3rem; }
+  .timing-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 0.3rem; }
+  .timing-val { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--mustard); white-space: nowrap; }
+
+  /* ADD-ONS */
+  .addons { padding: 8rem 5rem; background: var(--cream-pale); }
+
+  .addons-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+
+  .addons-h2 { font-family: 'Cormorant', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 1.5rem; }
+  .addons-h2 em { font-style: italic; color: var(--terracotta); }
+  .addons-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .addon-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .addon-card { background: var(--white); padding: 2rem 2.5rem; border-radius: 2px; border: 1px solid var(--cream-light); transition: border-color 0.2s, box-shadow 0.2s; }
+  .addon-card:hover { border-color: var(--terracotta); box-shadow: 0 4px 20px rgba(156,93,60,0.06); }
+  .addon-card-eyebrow { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta); font-weight: 600; margin-bottom: 0.6rem; }
+  .addon-card-title { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.6rem; }
+  .addon-card-text { font-size: 0.83rem; line-height: 1.8; color: var(--text-light); font-weight: 300; }
+
+  /* PRICING */
+  .pricing { padding: 8rem 5rem; background: var(--white); }
+
+  .pricing-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+
+  .pricing-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 1.5rem; }
+  .pricing-h2 em { font-style: italic; color: var(--mustard); }
+  .pricing-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .pricing-pull { border-left: 2px solid var(--terracotta); padding-left: 1.5rem; margin: 2.5rem 0; }
+  .pricing-pull p { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 400; font-style: italic; color: var(--charcoal); line-height: 1.6; }
+
+  .pricing-points { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); }
+  .pricing-point { background: var(--white); padding: 1.5rem 2rem; display: flex; gap: 1.2rem; align-items: flex-start; transition: background 0.2s; }
+  .pricing-point:hover { background: var(--cream-pale); }
+  .pp-arrow { color: var(--terracotta); flex-shrink: 0; font-size: 0.9rem; margin-top: 0.1rem; }
+  .pp-text { font-size: 0.85rem; line-height: 1.6; color: var(--text-light); font-weight: 300; }
+  .pp-text strong { color: var(--charcoal); font-weight: 500; }
+
+  /* CTA */
+  .services-cta { padding: 8rem 5rem; background: var(--terracotta-pale); text-align: center; position: relative; overflow: hidden; }
+  .services-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(156,93,60,0.1) 0%, transparent 70%); pointer-events: none; }
+
+  .cta-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; margin-bottom: 1.5rem; position: relative; }
+  .cta-h2 em { font-style: italic; color: var(--terracotta-light); display: block; }
+  .cta-sub { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3rem; position: relative; font-weight: 300; }
+
+  .btn-light { display: inline-block; background: var(--white); color: var(--charcoal); padding: 1rem 2.5rem; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; border: 1px solid var(--white); position: relative; }
+  .btn-light:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
+  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
+  .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
+  .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--charcoal); }
+  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(110,107,65,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; }
+  .footer-founder { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; font-style: italic; }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    * { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .page-hero { padding: 7rem 1.5rem 4rem; }
+    .page-hero::before { display: none; }
+    .engagement, .core-services, .addons, .pricing, .services-cta { padding: 5rem 1.5rem; }
+    .engagement-inner, .services-header, .addons-inner, .pricing-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .service-row { grid-template-columns: 1fr; gap: 1.5rem; }
+    .service-timing { text-align: left; }
+    footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">On<em style="font-style:normal;color:var(--terracotta)">E</em>arth</span>
+    <span class="nav-logo-sub">Functional Medicine Marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="apply.html" class="nav-apply">Apply for a Spot</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-eyebrow">Services</div>
+  <h1 class="page-h1">Everything your practice needs.<br><em>Nothing you don't.</em></h1>
+  <p class="page-intro">Every OnEarth engagement is a 6-month minimum. Not because of contract length — because that's what real results actually take. The system compounds over time. Anything less wouldn't be honest.</p>
+</section>
+
+<!-- ENGAGEMENT MODEL -->
+<section class="engagement">
+  <div class="engagement-inner reveal">
+    <div>
+      <div class="eng-eyebrow">The Engagement</div>
+      <h2 class="eng-h2">Built for practices<br>that want results,<br><em>not reports.</em></h2>
+      <p class="eng-text">OnEarth works exclusively with functional medicine practitioners. No generic playbooks. No junior account managers. Every strategy is built around the specific way patients in this field make decisions about their health.</p>
+      <p class="eng-text">The investment is designed to be recovered within the first 2–3 new patients per month. For most functional medicine practices, that's achievable within the first 90 days.</p>
+    </div>
+    <div class="eng-facts reveal reveal-delay-2">
+      <div class="eng-fact">
+        <span class="eng-fact-icon">→</span>
+        <div><div class="eng-fact-title">6-month minimum engagement</div><p class="eng-fact-text">Real results compound. Month one looks nothing like month six — and that's by design.</p></div>
+      </div>
+      <div class="eng-fact">
+        <span class="eng-fact-icon">→</span>
+        <div><div class="eng-fact-title">Maximum 3 practices per city</div><p class="eng-fact-text">Your local market is protected. Once your city fills, it closes.</p></div>
+      </div>
+      <div class="eng-fact">
+        <span class="eng-fact-icon">→</span>
+        <div><div class="eng-fact-title">Performance clause included</div><p class="eng-fact-text">If we exceed agreed targets, we share in the upside. Our incentives are aligned with yours from day one.</p></div>
+      </div>
+      <div class="eng-fact">
+        <span class="eng-fact-icon">→</span>
+        <div><div class="eng-fact-title">Direct access to Isa, always</div><p class="eng-fact-text">No account managers. No support tickets. You work with the person who knows your practice.</p></div>
+      </div>
+      <div class="eng-fact">
+        <span class="eng-fact-icon">→</span>
+        <div><div class="eng-fact-title">Under 6 hours of your time per month</div><p class="eng-fact-text">You focus on patients. We build the system. You review and approve — nothing more.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE SERVICES -->
+<section class="core-services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-eyebrow">Core Services</div>
+      <h2 class="services-h2">Included in every<br><em>engagement.</em></h2>
+    </div>
+    <p class="services-intro">These are not à la carte options. Every OnEarth engagement includes all of the following — because a partial system doesn't compound. All six pillars work together or they don't work at all.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">01</div>
+        <div class="service-name">New Website</div>
+        <div class="service-tag">Foundation</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">Built for patients. Ranked by Google.</div>
+        <p class="service-text">A professionally designed, mobile-optimised website built for patient conversion and search ranking. Condition-specific service pages, clear consultation calls-to-action, and copy written in the language your patients actually use. Not a template filled with placeholder words — a real website that reflects 10, 20, or 30 years of clinical expertise. Delivered in month one.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Month 1</div>
+      </div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">02</div>
+        <div class="service-name">Lead Magnet & Landing Page</div>
+        <div class="service-tag">Capture</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">Turn visitors into a patient list.</div>
+        <p class="service-text">A high-value free resource — a guide, a symptom checklist, a condition explainer — paired with a dedicated landing page and email opt-in. Visitors who aren't ready to book become subscribers you can nurture. Every month that passes without this in place is a month of lost leads you'll never recover.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Month 1</div>
+      </div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">03</div>
+        <div class="service-name">Google Business Profile</div>
+        <div class="service-tag">Local Authority</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">The most overlooked asset in local search.</div>
+        <p class="service-text">A fully built and optimised Google Business Profile — the single highest-impact local search asset most practices completely neglect. Complete categories, professional photos, Q&A, weekly posts, and a review generation system that builds your Google credibility consistently over time. Practices with complete profiles appear in the local map pack — the three results shown before any organic search results. Most of your competitors aren't in it.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Month 1–2</div>
+      </div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">04</div>
+        <div class="service-name">Email Newsletter & Sequences</div>
+        <div class="service-tag">Nurture</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">Stay present with patients who aren't ready yet.</div>
+        <p class="service-text">A monthly educational newsletter and automated nurture sequences for new subscribers. Educational, trust-building content that moves people from curious to ready — without you writing a word of it. Most functional medicine patients research for months before booking. This keeps you in front of them the entire time.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Month 3–4</div>
+      </div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">05</div>
+        <div class="service-name">Blog & Content Authority</div>
+        <div class="service-tag">Search</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">Rank for the searches that matter.</div>
+        <p class="service-text">Condition-focused blog posts targeting the exact searches your ideal patients make. Written for both Google and real humans — not keyword stuffing, not generic wellness content. Real clinical depth in patient-accessible language. Eight posts over six months, each one building topical authority in your specialty and your city.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Month 3–6</div>
+      </div>
+    </div>
+
+    <div class="service-row reveal">
+      <div class="service-label-col">
+        <div class="service-num">06</div>
+        <div class="service-name">Performance Dashboard</div>
+        <div class="service-tag">Visibility</div>
+      </div>
+      <div class="service-content">
+        <div class="service-title">Know exactly what's working.</div>
+        <p class="service-text">A monthly performance review covering rankings, website traffic, lead volume, and conversion. No vanity metrics. Just the numbers that connect to new patients — so you know exactly what the system is doing and where we go next.</p>
+      </div>
+      <div class="service-timing">
+        <div class="timing-label">Delivered</div>
+        <div class="timing-val">Monthly</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons">
+  <div class="addons-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Add-On Services</div>
+      <h2 class="addons-h2">Social media is optional.<br><em>Priced separately.</em></h2>
+      <p class="addons-text">Social media management is not included in the core engagement — because not every practice needs it, and the ones that do deserve a dedicated approach, not something bolted onto everything else.</p>
+      <p class="addons-text">If you want OnEarth to manage your social presence, we handle everything. You choose the volume. For video content, we provide full production briefs — proposed scripts, shooting direction, and editing guidance. You show up on camera. We handle the rest.</p>
+    </div>
+    <div class="addon-cards reveal reveal-delay-2">
+      <div class="addon-card">
+        <div class="addon-card-eyebrow">Add-On · Social</div>
+        <div class="addon-card-title">Social Media Management</div>
+        <p class="addon-card-text">Strategy, content creation, caption writing, hashtag research, and post scheduling across Instagram and Facebook. Choose your posting frequency. Priced per post volume agreed monthly.</p>
+      </div>
+      <div class="addon-card">
+        <div class="addon-card-eyebrow">Add-On · Video</div>
+        <div class="addon-card-title">Video Content Direction</div>
+        <p class="addon-card-text">Full production brief for every video — proposed script, shooting direction, B-roll notes, and editing guidelines. You film. We direct and edit. Designed for practitioners who want to show up on camera without spending hours figuring out what to say.</p>
+      </div>
+      <div class="addon-card">
+        <div class="addon-card-eyebrow">Add-On · Pages</div>
+        <div class="addon-card-title">Additional Landing Pages</div>
+        <p class="addon-card-text">Dedicated landing pages for specific conditions, programmes, or campaigns — beyond what's included in the core website. Priced per page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Investment</div>
+      <h2 class="pricing-h2">Transparent about<br>what we don't<br><em>publish.</em></h2>
+      <p class="pricing-text">Pricing is discussed on the discovery call — because no two practices start from the same place. A solo practitioner in year two of their clinic has different needs and different starting points than a 15-year established practice with an existing patient base.</p>
+      <p class="pricing-text">What we can tell you: the investment is designed to be recovered within the first 2–3 new patients per month. For most functional medicine practices, that's achievable within the first 90 days of the engagement.</p>
+      <div class="pricing-pull">
+        <p>If you're seeing 1–2 new patients from OnEarth every month, the engagement is paying for itself. Everything above that is growth.</p>
+      </div>
+    </div>
+    <div class="pricing-points reveal reveal-delay-2">
+      <div class="pricing-point">
+        <span class="pp-arrow">→</span>
+        <span class="pp-text"><strong>6-month minimum</strong> engagement. No lock-in beyond that — month-to-month from month seven.</span>
+      </div>
+      <div class="pricing-point">
+        <span class="pp-arrow">→</span>
+        <span class="pp-text"><strong>Performance clause</strong> in every contract. If we exceed targets, we share in the upside.</span>
+      </div>
+      <div class="pricing-point">
+        <span class="pp-arrow">→</span>
+        <span class="pp-text"><strong>No hidden extras.</strong> Core services are all-inclusive. Add-ons are agreed separately, in advance.</span>
+      </div>
+      <div class="pricing-point">
+        <span class="pp-arrow">→</span>
+        <span class="pp-text"><strong>Pricing discussed</strong> on the discovery call, after we review your current presence and confirm the fit.</span>
+      </div>
+      <div class="pricing-point">
+        <span class="pp-arrow">→</span>
+        <span class="pp-text"><strong>No obligation</strong> on the discovery call. If it's not the right fit, we tell you — and we'll tell you why.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="services-cta">
+  <h2 class="cta-h2 reveal">Ready to build the presence<br><em>your practice deserves?</em></h2>
+  <p class="cta-sub reveal reveal-delay-1">Applications reviewed within 48 hours. No obligation. No sales pressure.</p>
+  <a href="apply.html" class="btn-primary reveal reveal-delay-2">Apply for a Spot</a>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand-name">OnEarth</div>
+    <div class="footer-brand-sub">Functional Medicine Marketing</div>
+    <p class="footer-text">Building the online presence functional medicine practitioners deserve. Maximum 3 practices per city.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@onearthagency.com">hello@onearthagency.com</a></li>
+      <li><a href="apply.html">Apply for a Spot</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Follow</div>
+    <ul class="footer-links">
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 OnEarth Agency · All rights reserved · onearthagency.com</span>
+    <span class="footer-founder">Founded by Isa Higgins</span>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animRing() { rx += (mx-rx)*0.1; ry += (my-ry)*0.1; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+  animRing();
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='48px'; ring.style.height='48px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='32px'; ring.style.height='32px'; });
+  });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

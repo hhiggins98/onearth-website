@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About · OnEarth Agency</title>
+<meta name="description" content="OnEarth Agency was founded by Isa Higgins — 5 years inside functional medicine, built from the ground up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #9C5D3C;
+    --terracotta-light: #b8795a;
+    --terracotta-pale: #f5ebe3;
+    --olive: #6E6B41;
+    --olive-light: #8a8755;
+    --cream: #D1C7B5;
+    --cream-light: #EDE8DF;
+    --cream-pale: #F7F4EF;
+    --mustard: #B07E1E;
+    --mustard-light: #c99a3a;
+    --charcoal: #1C1712;
+    --charcoal-mid: #2a2118;
+    --white: #FAF8F4;
+    --text: #2a2118;
+    --text-mid: #4a3a2e;
+    --text-light: #7a6a5a;
+    --text-dimmer: #a09080;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); font-weight: 300; overflow-x: hidden; }
+
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 9999; }
+
+  * { cursor: none; }
+  .cursor { position: fixed; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: width 0.3s, height 0.3s; }
+  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(156,93,60,0.35); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.2rem 5rem; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,244,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(110,107,65,0.1); }
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-logo-main { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; line-height: 1; }
+  .nav-logo-sub { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 400; margin-top: 3px; }
+  .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-apply { background: var(--charcoal) !important; color: var(--white) !important; padding: 0.6rem 1.5rem; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
+  .nav-apply:hover { background: var(--terracotta) !important; }
+
+  /* PAGE HERO */
+  .page-hero { padding: 9rem 5rem 5rem; position: relative; }
+
+  .page-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.6s ease 0.2s both; }
+  .page-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .page-h1 { font-family: 'Cormorant', serif; font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 300; color: var(--charcoal); line-height: 1.0; max-width: 700px; animation: fadeUp 0.7s ease 0.4s both; }
+  .page-h1 em { font-style: italic; color: var(--terracotta); }
+
+  /* ANNOTATION SECTION */
+  .annotation-section { padding: 4rem 5rem 8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+
+  .annotation-wrap { position: relative; display: flex; justify-content: center; min-height: 520px; }
+
+  .annotation-photo { width: 360px; height: 450px; object-fit: cover; object-position: center top; border-radius: 4px; filter: sepia(5%) contrast(105%); display: block; position: relative; z-index: 2; }
+
+  .photo-bracket { position: absolute; width: 360px; height: 450px; top: 16px; left: 50%; transform: translateX(-50%); border: 1px solid rgba(156,93,60,0.2); border-radius: 4px; z-index: 1; }
+
+  /* Annotation items */
+  .ann { position: absolute; z-index: 3; display: flex; align-items: center; gap: 0.6rem; }
+  .ann-text { font-family: 'Cormorant', serif; font-size: 0.92rem; font-weight: 400; font-style: italic; color: var(--text-mid); white-space: nowrap; line-height: 1.4; }
+  .ann-line { height: 1px; background: var(--terracotta); flex-shrink: 0; opacity: 0.7; }
+
+  .ann-top-left { top: 6%; left: -8%; flex-direction: row-reverse; }
+  .ann-top-left .ann-line { width: 50px; }
+  .ann-top-right { top: 18%; right: -10%; }
+  .ann-top-right .ann-line { width: 50px; }
+  .ann-mid-left { top: 40%; left: -12%; flex-direction: row-reverse; }
+  .ann-mid-left .ann-line { width: 60px; }
+  .ann-mid-right { top: 58%; right: -8%; }
+  .ann-mid-right .ann-line { width: 50px; }
+  .ann-bot-left { bottom: 20%; left: -6%; flex-direction: row-reverse; }
+  .ann-bot-left .ann-line { width: 45px; }
+  .ann-bot-right { bottom: 8%; right: -8%; }
+  .ann-bot-right .ann-line { width: 45px; }
+
+  /* ABOUT TEXT */
+  .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .about-h2 { font-family: 'Cormorant', serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 2rem; }
+  .about-h2 em { font-style: italic; color: var(--terracotta); }
+
+  .about-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .about-pull { border-left: 2px solid var(--terracotta); padding-left: 1.5rem; margin: 2.5rem 0; }
+  .about-pull p { font-family: 'Cormorant', serif; font-size: 1.3rem; font-weight: 400; font-style: italic; color: var(--charcoal); line-height: 1.6; }
+
+  /* HOW I WORK */
+  .how-i-work { padding: 8rem 5rem; background: var(--olive-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+
+  .how-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .how-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .how-h2 { font-family: 'Cormorant', serif; font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 2rem; }
+  .how-h2 em { font-style: italic; color: var(--mustard-light); }
+  .how-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+
+  .how-facts { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); }
+  .how-fact { background: var(--white); padding: 1.8rem 2rem; display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem; align-items: start; transition: background 0.2s; }
+  .how-fact:hover { background: var(--cream-pale); }
+  .fact-num { font-family: 'Cormorant Upright', serif; font-size: 1.6rem; font-weight: 300; color: var(--terracotta); line-height: 1; opacity: 0.8; }
+  .fact-title { font-family: 'Cormorant', serif; font-size: 1.1rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.4rem; }
+  .fact-text { font-size: 0.82rem; line-height: 1.7; color: var(--text-light); font-weight: 300; }
+
+  /* CTA */
+  .about-cta { padding: 8rem 5rem; text-align: center; position: relative; background: var(--cream-pale); }
+  .about-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(156,93,60,0.06) 0%, transparent 70%); pointer-events: none; }
+
+  .cta-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.5rem, 4vw, 4.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; margin-bottom: 1.5rem; position: relative; }
+  .cta-h2 em { font-style: italic; color: var(--terracotta); display: block; }
+  .cta-sub { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3rem; font-weight: 300; position: relative; }
+
+  .btn-primary { display: inline-block; background: var(--terracotta); color: var(--white); padding: 1rem 2.5rem; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; border: 1px solid var(--terracotta); }
+  .btn-primary:hover { background: var(--charcoal); border-color: var(--charcoal); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
+  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
+  .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
+  .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--charcoal); }
+  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(110,107,65,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; }
+  .footer-founder { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; font-style: italic; }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    * { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .page-hero { padding: 7rem 1.5rem 4rem; }
+    .annotation-section { grid-template-columns: 1fr; gap: 10rem; padding: 4rem 1.5rem 6rem; }
+    .annotation-wrap { min-height: 460px; }
+    .annotation-photo { width: 280px; height: 360px; }
+    .photo-bracket { width: 280px; height: 360px; }
+    .ann-text { font-size: 0.8rem; white-space: normal; max-width: 110px; }
+    .how-i-work { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    .about-cta { padding: 5rem 1.5rem; }
+    footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">On<em style="font-style:normal;color:var(--terracotta)">E</em>arth</span>
+    <span class="nav-logo-sub">Functional Medicine Marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="apply.html" class="nav-apply">Apply for a Spot</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-eyebrow">About</div>
+  <h1 class="page-h1">One person.<br>One focus.<br><em>Built to last.</em></h1>
+</section>
+
+<section class="annotation-section">
+  <div class="annotation-wrap reveal">
+    <div class="photo-bracket"></div>
+    <img
+      class="annotation-photo"
+      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format"
+      alt="Isa Higgins, Founder of OnEarth Agency"
+    >
+    <!-- REPLACE src above with your actual photo URL -->
+
+    <div class="ann ann-top-left">
+      <span class="ann-text">5 years in<br>functional medicine</span>
+      <span class="ann-line"></span>
+    </div>
+    <div class="ann ann-top-right">
+      <span class="ann-line"></span>
+      <span class="ann-text">Graphic designer<br>& video editor</span>
+    </div>
+    <div class="ann ann-mid-left">
+      <span class="ann-text">Built Dr. Bob<br>Rakowski's presence</span>
+      <span class="ann-line"></span>
+    </div>
+    <div class="ann ann-mid-right">
+      <span class="ann-line"></span>
+      <span class="ann-text">Max 3 clients<br>per city</span>
+    </div>
+    <div class="ann ann-bot-left">
+      <span class="ann-text">Isa Higgins<br>Founder</span>
+      <span class="ann-line"></span>
+    </div>
+    <div class="ann ann-bot-right">
+      <span class="ann-line"></span>
+      <span class="ann-text">AI-powered.<br>Personally led.</span>
+    </div>
+  </div>
+
+  <div class="reveal reveal-delay-2">
+    <div class="section-eyebrow">The Story</div>
+    <h2 class="about-h2">I didn't just learn functional medicine marketing.<br><em>I lived inside it for five years.</em></h2>
+    <p class="about-text">OnEarth exists because I saw a gap nobody was filling properly. Functional medicine practitioners are among the most skilled health professionals working today — many of them transforming lives that conventional medicine couldn't help. And most of them are invisible online.</p>
+    <p class="about-text">Generic marketing agencies don't understand the functional medicine patient. They don't understand root-cause medicine, or the specific fears and hopes of someone who's been dismissed by ten doctors before finding a practitioner who actually listens. I do — because I spent five years building for one of the best in the field.</p>
+    <div class="about-pull"><p>That knowledge is what makes OnEarth different. Not the tools. Not the templates. The understanding.</p></div>
+    <p class="about-text">I take on a maximum of three clients per city at any time. Each practice receives direct access to me — not an account manager, not a support ticket. Every piece of work that leaves OnEarth has been reviewed by me personally before it reaches you.</p>
+  </div>
+</section>
+
+<section class="how-i-work">
+  <div class="reveal">
+    <div class="how-eyebrow">How I Work</div>
+    <h2 class="how-h2">The same care you give<br>your patients —<br><em>I give your practice.</em></h2>
+    <p class="how-text">I use AI as a force multiplier — for research, for content drafts, for systems that would otherwise require a full team. But the strategy, the creative direction, and the client relationship are mine. That's the model.</p>
+    <p class="how-text">It doesn't scale past a certain point by design. That's not a limitation — it's the point.</p>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="how-facts">
+      <div class="how-fact">
+        <div class="fact-num">01</div>
+        <div><div class="fact-title">Direct access, always</div><p class="fact-text">You work with me directly. No account managers, no handoffs, no junior team members learning on your dime.</p></div>
+      </div>
+      <div class="how-fact">
+        <div class="fact-num">02</div>
+        <div><div class="fact-title">Maximum three per city</div><p class="fact-text">Your local market is protected. I don't take on competitors in your area once your spot is filled.</p></div>
+      </div>
+      <div class="how-fact">
+        <div class="fact-num">03</div>
+        <div><div class="fact-title">Six months minimum</div><p class="fact-text">Because that's what real results take. Month one looks different from month six. The system compounds.</p></div>
+      </div>
+      <div class="how-fact">
+        <div class="fact-num">04</div>
+        <div><div class="fact-title">Performance clause included</div><p class="fact-text">Every engagement includes a performance clause. If we exceed targets, we share in the upside. Our incentives are aligned.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-cta">
+  <h2 class="cta-h2 reveal">Ready to work together?<br><em>Apply for a spot.</em></h2>
+  <p class="cta-sub reveal reveal-delay-1">Applications reviewed within 48 hours. No obligation, no sales pressure.</p>
+  <a href="apply.html" class="btn-primary reveal reveal-delay-2">Apply to Work Together</a>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand-name">OnEarth</div>
+    <div class="footer-brand-sub">Functional Medicine Marketing</div>
+    <p class="footer-text">Building the online presence functional medicine practitioners deserve. Maximum 3 practices per city.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@onearthagency.com">hello@onearthagency.com</a></li>
+      <li><a href="apply.html">Apply for a Spot</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Follow</div>
+    <ul class="footer-links">
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 OnEarth Agency · All rights reserved</span>
+    <span class="footer-founder">Founded by Isa Higgins</span>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animRing() { rx += (mx-rx)*0.1; ry += (my-ry)*0.1; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+  animRing();
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='48px'; ring.style.height='48px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='32px'; ring.style.height='32px'; });
+  });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

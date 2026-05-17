@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnEarth Agency · Functional Medicine Marketing</title>
+<meta name="description" content="OnEarth Agency builds the online presence functional medicine practitioners deserve. Maximum 3 practices per city. Currently accepting applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta: #9C5D3C;
+    --terracotta-light: #b8795a;
+    --olive: #6E6B41;
+    --olive-light: #8a8755;
+    --cream: #D1C7B5;
+    --cream-light: #EDE8DF;
+    --cream-pale: #F7F4EF;
+    --mustard: #B07E1E;
+    --mustard-light: #c99a3a;
+    --charcoal: #1C1712;
+    --charcoal-mid: #2a2118;
+    --charcoal-light: #382C23;
+    --white: #FAF8F4;
+    --text: #2a2118;
+    --text-mid: #4a3a2e;
+    --text-light: #7a6a5a;
+    --text-dimmer: #a09080;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  * { cursor: none; }
+  .cursor { position: fixed; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: width 0.3s, height 0.3s; }
+  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(156,93,60,0.35); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 1.8rem 5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(250,248,244,0.97);
+    backdrop-filter: blur(20px);
+    padding: 1.2rem 5rem;
+    border-bottom: 1px solid rgba(110,107,65,0.1);
+  }
+
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-logo-main { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; line-height: 1; }
+  .nav-logo-sub { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 400; margin-top: 3px; }
+  .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-apply { background: var(--charcoal) !important; color: var(--white) !important; padding: 0.6rem 1.5rem; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
+  .nav-apply:hover { background: var(--terracotta) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute; right: 0; top: 10%; bottom: 10%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(110,107,65,0.2) 30%, rgba(110,107,65,0.2) 70%, transparent);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--olive); font-weight: 500; margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+
+  .hero-eyebrow::before { content: ''; display: block; width: 2.5rem; height: 1px; background: var(--olive); }
+
+  .hero-h1 {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300; line-height: 1.0; color: var(--charcoal);
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-h1 em { font-style: italic; color: var(--terracotta); display: block; }
+
+  .hero-sub {
+    font-size: 0.92rem; line-height: 1.9; color: var(--text-light);
+    max-width: 460px; margin-bottom: 3rem; font-weight: 300;
+    opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s ease 0.9s forwards;
+  }
+
+  .btn-primary { display: inline-block; background: var(--terracotta); color: var(--white); padding: 1rem 2.2rem; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; border: 1px solid var(--terracotta); }
+  .btn-primary:hover { background: var(--charcoal); border-color: var(--charcoal); }
+  .btn-ghost { display: inline-block; background: transparent; color: var(--text-mid); padding: 1rem 2.2rem; text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; border: 1px solid var(--cream); transition: all 0.3s; }
+  .btn-ghost:hover { border-color: var(--charcoal-light); color: var(--charcoal); }
+
+  .hero-right {
+    background: var(--cream-light); position: relative; overflow: hidden;
+  }
+
+  .hero-right-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: sepia(8%) saturate(88%); display: block; }
+  .hero-right-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(156,93,60,0.07) 0%, transparent 50%); }
+
+  .hero-float {
+    position: absolute; bottom: 3rem; left: 2rem;
+    background: rgba(250,248,244,0.96); backdrop-filter: blur(8px);
+    padding: 1.4rem 2rem; border-left: 3px solid var(--terracotta);
+  }
+
+  .hero-float-val { font-family: 'Cormorant Upright', serif; font-size: 2rem; font-weight: 500; color: var(--charcoal); line-height: 1; }
+  .hero-float-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-top: 0.3rem; }
+
+  .hero-creds {
+    position: absolute; top: 3rem; right: 2rem;
+    display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end;
+    opacity: 0; animation: fadeUp 0.7s ease 1.1s forwards;
+  }
+
+  .hero-cred { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(42,33,24,0.4); background: rgba(250,248,244,0.88); padding: 0.3rem 0.7rem; border-radius: 1px; }
+
+  /* STATS BAND */
+  .stats-band {
+    border-top: 1px solid rgba(110,107,65,0.12);
+    border-bottom: 1px solid rgba(110,107,65,0.12);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--cream-pale);
+  }
+
+  .stat-item { padding: 2.5rem 3rem; border-right: 1px solid rgba(110,107,65,0.1); transition: background 0.3s; }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: var(--cream-light); }
+  .stat-val { font-family: 'Cormorant Upright', serif; font-size: 2.5rem; font-weight: 500; color: var(--terracotta); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 400; }
+
+  /* PROBLEM */
+  .problem { padding: 10rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; position: relative; background: var(--white); }
+
+  .problem::before { content: '01'; position: absolute; right: 4rem; top: 5rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(110,107,65,0.04); line-height: 1; pointer-events: none; }
+
+  .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .section-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
+
+  .problem-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; }
+  .problem-h2 em { font-style: italic; color: var(--terracotta); display: block; }
+  .problem-text { font-size: 0.92rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+  .problem-pull { border-left: 2px solid var(--terracotta); padding-left: 1.5rem; margin-top: 2.5rem; }
+  .problem-pull p { font-family: 'Cormorant', serif; font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--charcoal); line-height: 1.6; }
+
+  /* METHOD — dark for contrast */
+  .method { padding: 10rem 5rem; background: var(--olive-pale); position: relative; overflow: hidden; }
+  .method::before { content: '02'; position: absolute; left: 3rem; top: 4rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(209,199,181,0.04); line-height: 1; pointer-events: none; }
+
+  .method-header { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-bottom: 5rem; align-items: end; }
+
+  .method-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mustard-light); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
+  .method-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--mustard-light); }
+
+  .method-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; }
+  .method-h2 em { font-style: italic; color: var(--mustard-light); }
+  .method-intro { font-size: 0.9rem; line-height: 1.9; color: var(--text-light); font-weight: 300; }
+
+  .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--cream); }
+
+  .method-step { background: var(--olive-pale); padding: 3rem 2.5rem; position: relative; transition: background 0.3s; overflow: hidden; }
+  .method-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .method-step:hover { background: var(--cream-light); }
+  .method-step:hover::before { transform: scaleX(1); }
+
+  .step-phase { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta-light); font-weight: 600; margin-bottom: 0.5rem; }
+  .step-num-large { font-family: 'Cormorant Upright', serif; font-size: 4rem; font-weight: 300; color: rgba(110,107,65,0.1); line-height: 1; margin-bottom: 1.5rem; transition: color 0.3s; }
+  .method-step:hover .step-num-large { color: rgba(110,107,65,0.2); }
+  .step-title { font-family: 'Cormorant', serif; font-size: 1.5rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .step-months { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mustard-light); margin-bottom: 1rem; font-weight: 500; }
+  .step-text { font-size: 0.82rem; line-height: 1.8; color: var(--text-light); font-weight: 300; }
+
+  /* EXCLUSIVITY */
+  .exclusivity { padding: 10rem 5rem; background: var(--cream-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; position: relative; }
+  .exclusivity::before { content: '03'; position: absolute; right: 4rem; top: 5rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(110,107,65,0.05); line-height: 1; pointer-events: none; }
+
+  .excl-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; }
+  .excl-h2 em { font-style: italic; color: var(--terracotta); display: block; }
+  .excl-text { font-size: 0.92rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+  .excl-rule { background: var(--white); border: 1px solid rgba(156,93,60,0.15); padding: 2rem 2.5rem; margin: 2.5rem 0; position: relative; }
+  .excl-rule::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--terracotta); }
+  .excl-rule p { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 400; font-style: italic; color: var(--charcoal); line-height: 1.6; }
+
+  /* PROOF */
+  .proof { padding: 10rem 5rem; background: var(--white); position: relative; }
+  .proof::before { content: '04'; position: absolute; left: 3rem; top: 4rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(110,107,65,0.04); line-height: 1; pointer-events: none; }
+
+  .proof-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
+  .proof-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 1.5rem; }
+  .proof-h2 em { font-style: italic; color: var(--mustard); }
+  .proof-text { font-size: 0.9rem; line-height: 2; color: var(--text-light); font-weight: 300; margin-bottom: 1.5rem; }
+  .proof-quote { font-family: 'Cormorant', serif; font-size: 1.45rem; font-weight: 300; font-style: italic; color: var(--charcoal); line-height: 1.5; margin: 3rem 0; padding-left: 2rem; border-left: 2px solid var(--terracotta); }
+
+  .proof-results { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); margin-top: 2rem; }
+  .proof-result { background: var(--white); padding: 1.4rem 2rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; transition: background 0.2s; }
+  .proof-result:hover { background: var(--cream-pale); }
+  .result-arrow { color: var(--terracotta); font-size: 1rem; flex-shrink: 0; }
+  .result-text { font-size: 0.85rem; color: var(--text-light); font-weight: 300; line-height: 1.5; }
+  .result-text strong { color: var(--charcoal); font-weight: 500; }
+
+  /* CTA BAND */
+  .cta-band { padding: 10rem 5rem; background: var(--terracotta-pale); text-align: center; position: relative; overflow: hidden; }
+  .cta-band::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(156,93,60,0.1) 0%, transparent 70%); pointer-events: none; }
+
+  .cta-h2 { font-family: 'Cormorant', serif; font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; margin-bottom: 2rem; position: relative; }
+  .cta-h2 em { font-style: italic; display: block; color: var(--terracotta-light); }
+  .cta-sub { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3rem; font-weight: 300; position: relative; }
+
+  .btn-light { display: inline-block; background: var(--white); color: var(--charcoal); padding: 1rem 2.5rem; text-decoration: none; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; transition: all 0.3s; border: 1px solid var(--white); position: relative; }
+  .btn-light:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
+  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
+  .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
+  .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 300; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--charcoal); }
+  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(110,107,65,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; }
+  .footer-founder { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; font-style: italic; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 768px) {
+    * { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    nav, nav.scrolled { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 5rem 1.5rem 3rem; }
+    .hero-left::after { display: none; }
+    .hero-right { height: 60vw; }
+    .stats-band { grid-template-columns: repeat(2,1fr); }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(110,107,65,0.1); }
+    .problem, .exclusivity { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem; }
+    .method { padding: 5rem 1.5rem; }
+    .method-header { grid-template-columns: 1fr; gap: 2rem; }
+    .method-steps { grid-template-columns: 1fr; }
+    .proof { padding: 5rem 1.5rem; }
+    .proof-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .cta-band { padding: 6rem 1.5rem; }
+    footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-main">On<em style="font-style:normal;color:var(--terracotta)">E</em>arth</span>
+    <span class="nav-logo-sub">Functional Medicine Marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="work.html">Work</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="apply.html" class="nav-apply">Apply for a Spot</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Functional Medicine Marketing · Accepting Applications</div>
+    <h1 class="hero-h1">
+      Your practice deserves<br>
+      to be found by the<br>
+      patients who need<br>
+      <em>you most.</em>
+    </h1>
+    <p class="hero-sub">Most functional medicine practitioners built their reputation on results, not marketing. OnEarth bridges that gap — building the online presence that reflects the depth of your work, and the systems that bring the right patients through your door.</p>
+    <div class="hero-actions">
+      <a href="apply.html" class="btn-primary">Apply for a Spot</a>
+      <a href="services.html" class="btn-ghost">See How It Works</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-right-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80&auto=format" alt="Functional medicine practice">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-float">
+      <div class="hero-float-val">5+</div>
+      <div class="hero-float-label">Years in Functional Medicine</div>
+    </div>
+    <div class="hero-creds">
+      <span class="hero-cred">Max 3 Practices Per City</span>
+      <span class="hero-cred">6-Month Implementation</span>
+    </div>
+  </div>
+</section>
+
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-val">5+</div><div class="stat-label">Years in Functional Medicine Marketing</div></div>
+  <div class="stat-item"><div class="stat-val">3</div><div class="stat-label">Max Practices Per City</div></div>
+  <div class="stat-item"><div class="stat-val">6mo</div><div class="stat-label">Full Implementation Timeline</div></div>
+  <div class="stat-item"><div class="stat-val">Now</div><div class="stat-label">Accepting Applications</div></div>
+</div>
+
+<section class="problem">
+  <div class="reveal">
+    <div class="section-eyebrow">The Reality</div>
+    <h2 class="problem-h2">Your website was built<br>in another era.<br><em>The world has moved on.</em></h2>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <p class="problem-text">Google has changed. Patient behaviour has changed. The way people choose a functional medicine practitioner has changed entirely. But most practices are still running on a digital presence built before any of that happened — a website that doesn't rank, doesn't convert, and doesn't come close to communicating the depth of what you actually offer.</p>
+    <p class="problem-text">Word of mouth built your clinic. It still matters. But it can't reach the patient sitting at home right now, searching for answers to symptoms they've had for years — the patient who would choose you in a heartbeat, if only they could find you.</p>
+    <div class="problem-pull"><p>That gap is what OnEarth fixes.</p></div>
+  </div>
+</section>
+
+<section class="method">
+  <div class="method-header reveal">
+    <div>
+      <div class="method-eyebrow">The Method</div>
+      <h2 class="method-h2">One agency.<br>One focus.<br><em>Built entirely around<br>your practice.</em></h2>
+    </div>
+    <p class="method-intro">OnEarth works exclusively with functional medicine practitioners. Every system we build, every piece of copy we write, every strategy we implement is designed for the specific way patients find, evaluate, and choose a practitioner in this field.</p>
+  </div>
+  <div class="method-steps">
+    <div class="method-step reveal reveal-delay-1">
+      <div class="step-phase">Phase 01</div>
+      <div class="step-num-large">01</div>
+      <div class="step-title">Audit & Strategy</div>
+      <div class="step-months">Month 1</div>
+      <p class="step-text">A complete audit of your online presence across every channel — scored against what's working for top functional medicine practices in your market. You receive a gap analysis and roadmap before we begin.</p>
+    </div>
+    <div class="method-step reveal reveal-delay-2">
+      <div class="step-phase">Phase 02</div>
+      <div class="step-num-large">02</div>
+      <div class="step-title">Foundation</div>
+      <div class="step-months">Months 1–2</div>
+      <p class="step-text">New website. Google Business Profile. Email capture. The infrastructure that everything else runs on — built correctly, once, so it compounds over time.</p>
+    </div>
+    <div class="method-step reveal reveal-delay-3">
+      <div class="step-phase">Phase 03</div>
+      <div class="step-num-large">03</div>
+      <div class="step-title">Authority</div>
+      <div class="step-months">Months 3–4</div>
+      <p class="step-text">Content and signals Google needs to rank you above local competitors. Condition-focused blog posts, local citations, review generation, and a monthly newsletter to your growing patient list.</p>
+    </div>
+    <div class="method-step reveal reveal-delay-4">
+      <div class="step-phase">Phase 04</div>
+      <div class="step-num-large">04</div>
+      <div class="step-title">Scale</div>
+      <div class="step-months">Months 5–6</div>
+      <p class="step-text">Email nurture sequences, performance review, and the data to know what's working. By month six, your practice has a patient acquisition system that works without you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="exclusivity">
+  <div class="reveal">
+    <div class="section-eyebrow">How We Work</div>
+    <h2 class="excl-h2">Maximum three<br>practices<br><em>per city.</em></h2>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <p class="excl-text">This isn't a marketing tactic. It's how the model works. When we take on a practice in a city, we're building their local authority — their rankings, their reputation, their visibility in that market. Taking on a fourth practice in the same city would work against every client we already serve.</p>
+    <div class="excl-rule"><p>"OnEarth works with a maximum of three practices per city. Once those spots are filled, the market is closed."</p></div>
+    <p class="excl-text">Once a market reaches capacity, it closes. New practices go on a waitlist. If you're reading this, your city may still be open.</p>
+    <a href="apply.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block">Check Your City</a>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="proof-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Proof of Work</div>
+      <h2 class="proof-h2">Five years.<br>One practitioner.<br><em>Built from the ground up.</em></h2>
+      <p class="proof-quote">"I didn't just learn functional medicine marketing. I lived inside it for five years."</p>
+      <a href="work.html" class="btn-ghost" style="margin-top:0.5rem">View the Case Study →</a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="proof-text">Before OnEarth, there was Dr. Bob Rakowski — one of the most respected functional medicine practitioners in the US, with over 33 years of clinical experience. For five years, every dimension of his digital presence was managed by one person who understood what his work deserved online.</p>
+      <div class="proof-results">
+        <div class="proof-result"><span class="result-arrow">→</span><span class="result-text"><strong>Social growth</strong> from 1,800 to 55,000+ followers — organic, no paid ads</span></div>
+        <div class="proof-result"><span class="result-arrow">→</span><span class="result-text"><strong>Three websites</strong> built and iterated over five years</span></div>
+        <div class="proof-result"><span class="result-arrow">→</span><span class="result-text"><strong>Full CRM</strong> with funnels, lead magnets, and email sequences</span></div>
+        <div class="proof-result"><span class="result-arrow">→</span><span class="result-text"><strong>Book launch</strong> infrastructure built end to end</span></div>
+        <div class="proof-result"><span class="result-arrow">→</span><span class="result-text"><strong>Video, content, and patient education</strong> assets — most without being asked</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2 class="cta-h2 reveal">The patients who need you<br>are already searching.<br><em>Let's make sure they find you.</em></h2>
+  <p class="cta-sub reveal reveal-delay-1">Applications reviewed within 48 hours. No obligation. No sales pressure.</p>
+  <a href="apply.html" class="btn-primary reveal reveal-delay-2">Apply for a Spot</a>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-brand-name">OnEarth</div>
+    <div class="footer-brand-sub">Functional Medicine Marketing</div>
+    <p class="footer-text">Building the online presence functional medicine practitioners deserve. Maximum 3 practices per city.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@onearthagency.com">hello@onearthagency.com</a></li>
+      <li><a href="apply.html">Apply for a Spot</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Follow</div>
+    <ul class="footer-links">
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 OnEarth Agency · All rights reserved · onearthagency.com</span>
+    <span class="footer-founder">Founded by Isa Higgins</span>
+  </div>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animRing() { rx += (mx-rx)*0.1; ry += (my-ry)*0.1; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+  animRing();
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='48px'; ring.style.height='48px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='32px'; ring.style.height='32px'; });
+  });
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
