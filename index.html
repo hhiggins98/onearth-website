@@ -69,6 +69,8 @@
   }
 
   .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
+  .nav-logo-img { height: 52px; width: auto; display: block; transition: opacity 0.2s; }
+  .nav-logo-img:hover { opacity: 0.8; }
   .nav-logo-main { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; line-height: 1; }
   .nav-logo-sub { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 400; margin-top: 3px; }
   .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
@@ -306,8 +308,7 @@
 
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">
-    <span class="nav-logo-main">OnEarth</span>
-    <span class="nav-logo-sub">Functional Medicine Marketing</span>
+    <img src="logo.svg" alt="OnEarth Agency" class="nav-logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="work.html">Work</a></li>
