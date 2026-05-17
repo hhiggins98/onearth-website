@@ -64,7 +64,7 @@
 
   .annotation-wrap { position: relative; display: flex; justify-content: center; min-height: 520px; }
 
-  .annotation-photo { width: 360px; height: 450px; object-fit: cover; object-position: center top; border-radius: 4px; filter: sepia(5%) contrast(105%); display: block; position: relative; z-index: 2; }
+  .annotation-photo { width: 360px; height: 450px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; position: relative; z-index: 2; }
 
   .photo-bracket { position: absolute; width: 360px; height: 450px; top: 16px; left: 50%; transform: translateX(-50%); border: 1px solid rgba(156,93,60,0.2); border-radius: 4px; z-index: 1; }
 
@@ -85,6 +85,50 @@
   .ann-bot-left .ann-line { width: 45px; }
   .ann-bot-right { bottom: 8%; right: -8%; }
   .ann-bot-right .ann-line { width: 45px; }
+
+  /* NAME TAG */
+  .name-tag {
+    position: absolute;
+    bottom: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 4;
+  }
+
+  .name-tag-line {
+    width: 2rem;
+    height: 2px;
+    background: var(--terracotta);
+    margin: 0 auto 0.7rem;
+  }
+
+  .name-tag-name {
+    font-family: 'Cormorant', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+
+  .name-tag-role {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-top: 0.3rem;
+  }
+
+  .name-tag-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-top: 0.2rem;
+  }
 
   /* ABOUT TEXT */
   .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
@@ -193,7 +237,7 @@
     <div class="photo-bracket"></div>
     <img
       class="annotation-photo"
-      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format"
+      src="about-photo.png"
       alt="Isa Higgins, Founder of OnEarth Agency"
     >
     <!-- REPLACE src above with your actual photo URL -->
@@ -215,12 +259,20 @@
       <span class="ann-text">Max 3 clients<br>per city</span>
     </div>
     <div class="ann ann-bot-left">
-      <span class="ann-text">Isa Higgins<br>Founder</span>
+      <span class="ann-text">AI-powered.<br>Personally led.</span>
       <span class="ann-line"></span>
     </div>
     <div class="ann ann-bot-right">
       <span class="ann-line"></span>
-      <span class="ann-text">AI-powered.<br>Personally led.</span>
+      <span class="ann-text">Max 3 clients<br>per city</span>
+    </div>
+
+    <!-- Name tag card -->
+    <div class="name-tag">
+      <div class="name-tag-line"></div>
+      <div class="name-tag-name">Isa Higgins</div>
+      <div class="name-tag-role">Founder · OnEarth Agency</div>
+      <div class="name-tag-title">Marketing Strategist</div>
     </div>
   </div>
 
