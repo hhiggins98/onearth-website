@@ -188,7 +188,7 @@
   .problem-pull p { font-family: 'Cormorant', serif; font-size: 1.35rem; font-weight: 400; font-style: italic; color: var(--charcoal); line-height: 1.6; }
 
   /* METHOD — dark for contrast */
-  .method { padding: 10rem 5rem; background: var(--olive-pale); position: relative; overflow: hidden; }
+  .method { padding: 10rem 5rem; background: var(--white); position: relative; overflow: hidden; border-top: 1px solid rgba(110,107,65,0.15); border-bottom: 1px solid rgba(110,107,65,0.15); }
   .method::before { content: '02'; position: absolute; left: 3rem; top: 4rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(209,199,181,0.04); line-height: 1; pointer-events: none; }
 
   .method-header { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-bottom: 5rem; align-items: end; }
@@ -200,11 +200,11 @@
   .method-h2 em { font-style: italic; color: var(--mustard-light); }
   .method-intro { font-size: 0.9rem; line-height: 1.9; color: var(--text-light); font-weight: 300; }
 
-  .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--cream); }
+  .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(110,107,65,0.12); }
 
-  .method-step { background: var(--olive-pale); padding: 3rem 2.5rem; position: relative; transition: background 0.3s; overflow: hidden; }
+  .method-step { background: var(--white); padding: 3rem 2.5rem; position: relative; transition: background 0.3s; overflow: hidden; }
   .method-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--terracotta); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
-  .method-step:hover { background: var(--cream-light); }
+  .method-step:hover { background: var(--cream-pale); }
   .method-step:hover::before { transform: scaleX(1); }
 
   .step-phase { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta-light); font-weight: 600; margin-bottom: 0.5rem; }
@@ -255,7 +255,7 @@
 
   /* FOOTER */
   footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
-  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
   .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
   .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
   .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
@@ -306,7 +306,7 @@
 
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">
-    <span class="nav-logo-main">On<em style="font-style:normal;color:var(--terracotta)">E</em>arth</span>
+    <span class="nav-logo-main">OnEarth</span>
     <span class="nav-logo-sub">Functional Medicine Marketing</span>
   </a>
   <ul class="nav-links">

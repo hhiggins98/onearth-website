@@ -57,12 +57,13 @@
   /* LEFT — context */
   .apply-left {
     padding: 7rem 5rem;
-    background: var(--olive-pale);
+    background: var(--cream-pale);
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    border-right: 1px solid rgba(110,107,65,0.15);
   }
 
   .apply-left::before {
@@ -87,7 +88,7 @@
 
   .wh-title { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; }
 
-  .wh-steps { display: flex; flex-direction: column; gap: 1px; background: var(--cream-light); }
+  .wh-steps { display: flex; flex-direction: column; gap: 1px; background: rgba(110,107,65,0.12); border: 1px solid rgba(110,107,65,0.12); }
 
   .wh-step { background: var(--white); padding: 1.4rem 1.8rem; display: grid; grid-template-columns: 2rem 1fr; gap: 1.2rem; align-items: start; transition: background 0.2s; }
   .wh-step:hover { background: var(--cream-pale); }
@@ -170,7 +171,7 @@
 
   /* FOOTER */
   footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
-  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
   .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
   .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
   .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
@@ -202,7 +203,7 @@
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <span class="nav-logo-main">On<em style="font-style:normal;color:var(--terracotta)">E</em>arth</span>
+    <span class="nav-logo-main">OnEarth</span>
     <span class="nav-logo-sub">Functional Medicine Marketing</span>
   </a>
   <ul class="nav-links">
