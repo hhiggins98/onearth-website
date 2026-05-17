@@ -60,9 +60,9 @@
   .page-h1 em { font-style: italic; color: var(--terracotta); }
 
   /* ANNOTATION SECTION */
-  .annotation-section { padding: 4rem 5rem 8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .annotation-section { padding: 4rem 5rem 8rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 8rem; align-items: center; }
 
-  .annotation-wrap { position: relative; display: flex; justify-content: center; min-height: 520px; width: 100%; }
+  .annotation-wrap { position: relative; display: flex; justify-content: center; min-height: 520px; padding: 0 4rem; }
 
   .annotation-photo { width: 360px; height: 450px; object-fit: cover; object-position: center top; border-radius: 4px; display: block; position: relative; z-index: 2; }
 
@@ -73,18 +73,18 @@
   .ann-text { font-family: 'Cormorant', serif; font-size: 0.92rem; font-weight: 400; font-style: italic; color: var(--text-mid); white-space: nowrap; line-height: 1.4; }
   .ann-line { height: 1px; background: var(--terracotta); flex-shrink: 0; opacity: 0.7; }
 
-  .ann-top-left { top: 6%; left: -42%; flex-direction: row; }
-  .ann-top-left .ann-line { width: 40px; }
-  .ann-top-right { top: 18%; right: -42%; flex-direction: row; }
-  .ann-top-right .ann-line { width: 40px; }
-  .ann-mid-left { top: 40%; left: -44%; flex-direction: row; }
-  .ann-mid-left .ann-line { width: 40px; }
-  .ann-mid-right { top: 58%; right: -42%; flex-direction: row; }
-  .ann-mid-right .ann-line { width: 40px; }
-  .ann-bot-left { bottom: 20%; left: -40%; flex-direction: row; }
-  .ann-bot-left .ann-line { width: 40px; }
-  .ann-bot-right { bottom: 8%; right: -40%; flex-direction: row; }
-  .ann-bot-right .ann-line { width: 40px; }
+  .ann-top-left { top: 6%; left: -2%; flex-direction: row-reverse; }
+  .ann-top-left .ann-line { width: 35px; }
+  .ann-top-right { top: 18%; right: -2%; flex-direction: row; }
+  .ann-top-right .ann-line { width: 35px; }
+  .ann-mid-left { top: 40%; left: -2%; flex-direction: row-reverse; }
+  .ann-mid-left .ann-line { width: 35px; }
+  .ann-mid-right { top: 58%; right: -2%; flex-direction: row; }
+  .ann-mid-right .ann-line { width: 35px; }
+  .ann-bot-left { bottom: 20%; left: -2%; flex-direction: row-reverse; }
+  .ann-bot-left .ann-line { width: 35px; }
+  .ann-bot-right { bottom: 8%; right: -2%; flex-direction: row; }
+  .ann-bot-right .ann-line { width: 35px; }
 
   /* Left annotations: text on left, line points right toward photo */
   .ann-top-left,
