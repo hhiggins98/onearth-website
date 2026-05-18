@@ -4,297 +4,341 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apply · OnEarth Agency</title>
-<meta name="description" content="Apply to work with OnEarth Agency. Maximum 3 functional medicine practices per city. Applications reviewed within 48 hours.">
+<meta name="description" content="Apply to work with OnEarth Agency — boutique marketing for functional medicine practitioners.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+Upright:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+Upright:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --terracotta: #9C5D3C;
     --terracotta-light: #b8795a;
-    --terracotta-pale: #f5ebe3;
     --olive: #6E6B41;
     --olive-light: #8a8755;
     --cream: #D1C7B5;
     --cream-light: #EDE8DF;
     --cream-pale: #F7F4EF;
     --mustard: #B07E1E;
-    --mustard-light: #c99a3a;
     --charcoal: #1C1712;
     --white: #FAF8F4;
-    --text: #2a2118;
-    --text-light: #7a6a5a;
-    --text-dimmer: #a09080;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); font-weight: 300; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); opacity: 0.025; pointer-events: none; z-index: 9999; }
-
-  * { cursor: none; }
-  .cursor { position: fixed; width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; pointer-events: none; z-index: 99999; transform: translate(-50%,-50%); transition: width 0.3s, height 0.3s; }
-  .cursor-ring { position: fixed; width: 32px; height: 32px; border: 1px solid rgba(156,93,60,0.35); border-radius: 50%; pointer-events: none; z-index: 99998; transform: translate(-50%,-50%); }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.2rem 5rem; display: flex; align-items: center; justify-content: space-between; background: rgba(250,248,244,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(110,107,65,0.1); }
-  .nav-logo { text-decoration: none; display: flex; flex-direction: column; }
-  .nav-logo-main { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; line-height: 1; }
-  .nav-logo-sub { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 400; margin-top: 3px; }
-  .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
-  .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); text-decoration: none; font-weight: 400; transition: color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color: var(--text); }
-  .nav-apply { background: var(--charcoal) !important; color: var(--white) !important; padding: 0.6rem 1.5rem; border-radius: 2px; font-weight: 500 !important; transition: background 0.2s !important; }
-  .nav-apply:hover { background: var(--terracotta) !important; }
-
-  /* LAYOUT */
-  .apply-layout {
-    min-height: 100vh;
-    padding-top: 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* LEFT — context */
-  .apply-left {
-    padding: 7rem 5rem;
-    background: var(--cream-pale);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    border-right: 1px solid rgba(110,107,65,0.15);
-  }
-
-  .apply-left::before {
-    content: '';
-    position: absolute;
-    bottom: -15%; right: -10%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(156,93,60,0.08), transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  .apply-eyebrow { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; animation: fadeUp 0.6s ease 0.2s both; }
-  .apply-eyebrow::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--olive); }
-
-  .apply-h1 { font-family: 'Cormorant', serif; font-size: clamp(2.8rem, 4vw, 4rem); font-weight: 300; color: var(--charcoal); line-height: 1.05; margin-bottom: 1.5rem; animation: fadeUp 0.7s ease 0.4s both; }
-  .apply-h1 em { font-style: italic; color: var(--terracotta-light); display: block; }
-
-  .apply-intro { font-size: 0.9rem; line-height: 1.9; color: var(--text-light); font-weight: 300; margin-bottom: 3rem; animation: fadeUp 0.7s ease 0.6s both; }
-
-  .what-happens { animation: fadeUp 0.7s ease 0.8s both; }
-
-  .wh-title { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive); font-weight: 500; margin-bottom: 1.5rem; }
-
-  .wh-steps { display: flex; flex-direction: column; gap: 1px; background: rgba(110,107,65,0.12); border: 1px solid rgba(110,107,65,0.12); }
-
-  .wh-step { background: var(--white); padding: 1.4rem 1.8rem; display: grid; grid-template-columns: 2rem 1fr; gap: 1.2rem; align-items: start; transition: background 0.2s; }
-  .wh-step:hover { background: var(--cream-pale); }
-  .wh-step-num { font-family: 'Cormorant Upright', serif; font-size: 1.2rem; font-weight: 300; color: var(--terracotta); line-height: 1.2; opacity: 0.8; }
-  .wh-step-title { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.2rem; }
-  .wh-step-text { font-size: 0.78rem; line-height: 1.6; color: var(--text-light); font-weight: 300; }
-
-  .apply-note { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(110,107,65,0.15); font-size: 0.8rem; line-height: 1.7; color: var(--text-light); font-style: italic; font-family: 'Cormorant', serif; animation: fadeUp 0.7s ease 1s both; }
-
-  /* RIGHT — form */
-  .apply-right {
-    padding: 7rem 5rem;
-    background: var(--cream-pale);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .form-heading { font-family: 'Cormorant', serif; font-size: 1.8rem; font-weight: 300; color: var(--charcoal); margin-bottom: 0.5rem; animation: fadeUp 0.6s ease 0.3s both; }
-  .form-sub { font-size: 0.82rem; color: var(--text-light); margin-bottom: 2.5rem; font-weight: 300; line-height: 1.6; animation: fadeUp 0.6s ease 0.5s both; }
-
-  /* TALLY EMBED */
-  .tally-wrap {
+  body {
+    font-family: 'Outfit', sans-serif;
     background: var(--white);
-    border-radius: 4px;
-    border: 1px solid var(--cream-light);
-    overflow: hidden;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeUp 0.7s ease 0.7s both;
-  }
-
-  /* Replace the placeholder below with your actual Tally embed */
-  .tally-placeholder {
-    text-align: center;
-    padding: 4rem 3rem;
-  }
-
-  .tally-placeholder-icon {
-    font-family: 'Cormorant Upright', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-
-  .tally-placeholder-title {
-    font-family: 'Cormorant', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
     color: var(--charcoal);
-    margin-bottom: 0.8rem;
+    font-size: 16px;
+    line-height: 1.6;
+    cursor: none;
+  }
+
+  /* CURSOR */
+  #cursor {
+    position: fixed; width: 6px; height: 6px;
+    background: var(--terracotta); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+  }
+  #cursorRing {
+    position: fixed; width: 32px; height: 32px;
+    border: 1px solid var(--terracotta); border-radius: 50%;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(250,248,244,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    border-bottom: 1px solid var(--cream);
+  }
+  .nav-logo { text-decoration: none; display: flex; flex-direction: column; gap: 0.1rem; }
+  .nav-logo-main {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.4rem; font-weight: 500;
+    color: var(--olive); letter-spacing: 0.02em;
+  }
+  .nav-logo-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.6rem; font-weight: 300;
+    color: var(--terracotta); letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem; font-weight: 400;
+    color: var(--charcoal); text-decoration: none;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+  .nav-cta {
+    background: var(--terracotta) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem !important;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--charcoal) !important; color: var(--white) !important; }
+
+  /* PAGE HERO */
+  .page-hero {
+    padding: 10rem 4rem 5rem;
+    background: var(--cream-pale);
+    border-bottom: 1px solid var(--cream);
+  }
+  .page-hero-eyebrow {
+    font-size: 0.7rem; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1rem;
+  }
+  .page-hero h1 {
+    font-family: 'Cormorant Upright', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400; line-height: 1.1;
+    color: var(--charcoal); max-width: 700px;
+  }
+  .page-hero h1 em {
+    font-style: italic; color: var(--terracotta);
+    font-family: 'Cormorant', serif;
+  }
+  .page-hero-sub {
+    margin-top: 1.5rem;
+    font-size: 1rem; font-weight: 300;
+    color: #5a5040; max-width: 560px;
+    line-height: 1.7;
+  }
+
+  /* APPLY SECTION */
+  .apply-section {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0;
+  }
+
+  /* LEFT PANEL */
+  .apply-left {
+    background: var(--cream-light);
+    padding: 5rem 4rem;
+    border-right: 1px solid var(--cream);
+  }
+  .apply-left-label {
+    font-size: 0.7rem; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 2rem;
+  }
+  .apply-left h2 {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 2rem; font-weight: 400;
+    color: var(--charcoal); line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .apply-left > p {
+    font-size: 0.9rem; font-weight: 300;
+    color: #5a5040; line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 2rem; }
+  .step { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .step-num {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.8rem; font-weight: 300;
+    color: var(--cream); line-height: 1;
+    min-width: 2rem;
+  }
+  .step-title {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--charcoal); margin-bottom: 0.4rem;
+  }
+  .step-text {
+    font-size: 0.8rem; font-weight: 300;
+    color: #5a5040; line-height: 1.7;
+  }
+  .apply-note {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--cream);
+    font-size: 0.8rem; font-weight: 300;
+    color: #7a6e60; line-height: 1.7;
     font-style: italic;
   }
 
-  .tally-placeholder-text {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 2rem;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+  /* RIGHT PANEL */
+  .apply-right {
+    background: var(--white);
+    padding: 5rem 4rem;
   }
-
-  .tally-placeholder-code {
-    font-size: 0.72rem;
-    background: var(--cream-pale);
-    border: 1px solid var(--cream-light);
-    padding: 0.8rem 1.2rem;
-    border-radius: 2px;
-    color: var(--text-light);
-    font-family: monospace;
-    letter-spacing: 0.04em;
-  }
+  .tally-wrap { width: 100%; }
 
   /* FOOTER */
-  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
-  .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
-  .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
-  .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
-  .footer-col-title { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mustard); font-weight: 500; margin-bottom: 1.5rem; }
+  footer {
+    background: var(--cream-pale);
+    border-top: 1px solid var(--cream);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand-name {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.4rem; font-weight: 500;
+    color: var(--olive); margin-bottom: 0.3rem;
+  }
+  .footer-brand-sub {
+    font-size: 0.65rem; font-weight: 300;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1rem;
+  }
+  .footer-text {
+    font-size: 0.8rem; font-weight: 300;
+    color: #7a6e60; line-height: 1.7;
+  }
+  .footer-col-title {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--charcoal); margin-bottom: 1.2rem;
+  }
   .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-  .footer-links a { font-size: 0.82rem; color: var(--text-light); text-decoration: none; font-weight: 300; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--charcoal); }
-  .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(110,107,65,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
-  .footer-copy { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; }
-  .footer-founder { font-size: 0.68rem; color: var(--text-dimmer); font-weight: 300; font-style: italic; }
+  .footer-links a {
+    font-size: 0.8rem; font-weight: 300;
+    color: #5a5040; text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--terracotta); }
+  .footer-bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--cream);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy, .footer-founder {
+    font-size: 0.7rem; font-weight: 300;
+    color: #9a8e80; letter-spacing: 0.05em;
+  }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
 
-  @media (max-width: 768px) {
-    * { cursor: auto; }
-    .cursor, .cursor-ring { display: none; }
-    nav { padding: 1rem 1.5rem; }
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
-    .apply-layout { grid-template-columns: 1fr; }
-    .apply-left, .apply-right { padding: 5rem 1.5rem; }
-    footer { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
-    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .page-hero { padding: 7rem 1.5rem 3rem; }
+    .apply-section { grid-template-columns: 1fr; }
+    .apply-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--cream); }
+    .apply-right { padding: 3rem 1.5rem; }
+    footer { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; gap: 2rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div id="cursor"></div>
+<div id="cursorRing"></div>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <span class="nav-logo-main">OnEarth</span>
     <span class="nav-logo-sub">Functional Medicine Marketing</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="work.html">Work</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="apply.html" class="nav-apply active">Apply for a Spot</a></li>
-  </ul>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="apply.html" class="nav-cta">Apply for a Spot</a>
+  </div>
 </nav>
 
-<div class="apply-layout">
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow reveal">Application</div>
+  <h1 class="reveal reveal-delay-1">Let's see if we're<br><em>the right fit.</em></h1>
+  <p class="page-hero-sub reveal reveal-delay-2">OnEarth takes on a maximum of three practices per city. This form helps us understand where your practice is today — and whether we can genuinely move the needle.</p>
+</section>
+
+<!-- APPLY SPLIT -->
+<div class="apply-section">
 
   <!-- LEFT -->
   <div class="apply-left">
-    <div class="apply-eyebrow">Application</div>
-    <h1 class="apply-h1">This isn't a contact form.<br><em>It's an application.</em></h1>
-    <p class="apply-intro">OnEarth takes on a limited number of new clients. Not to create artificial scarcity — but because the level of attention each practice receives only works when the caseload is small. Fill in the form and we'll review your application within 48 hours.</p>
+    <div class="apply-left-label">What happens next</div>
+    <h2>Four steps from application to audit.</h2>
+    <p>No obligation at any stage. If we're not the right fit, we'll tell you — and we'll tell you why.</p>
 
-    <div class="what-happens">
-      <div class="wh-title">What happens next</div>
-      <div class="wh-steps">
-        <div class="wh-step">
-          <div class="wh-step-num">01</div>
-          <div>
-            <div class="wh-step-title">You submit the application</div>
-            <p class="wh-step-text">Takes approximately 5 minutes. The more context you give, the better we can assess the fit.</p>
-          </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">You submit the application</div>
+          <p class="step-text">Takes approximately 5 minutes. The more context you give, the better we can assess the fit.</p>
         </div>
-        <div class="wh-step">
-          <div class="wh-step-num">02</div>
-          <div>
-            <div class="wh-step-title">We review your current presence</div>
-            <p class="wh-step-text">We look at your website, Google profile, social channels, and local market before responding.</p>
-          </div>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">We review your current presence</div>
+          <p class="step-text">We look at your website, Google profile, social channels, and local market before responding.</p>
         </div>
-        <div class="wh-step">
-          <div class="wh-step-num">03</div>
-          <div>
-            <div class="wh-step-title">Discovery call scheduled</div>
-            <p class="wh-step-text">If it looks like a strong fit, you'll receive a link to schedule a 30-minute discovery call.</p>
-          </div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Discovery call scheduled</div>
+          <p class="step-text">If it looks like a strong fit, you'll receive a link to schedule a 30-minute discovery call.</p>
         </div>
-        <div class="wh-step">
-          <div class="wh-step-num">04</div>
-          <div>
-            <div class="wh-step-title">Complimentary audit delivered</div>
-            <p class="wh-step-text">Before the call, you receive a full audit of your online presence and a 6-month roadmap — no commitment required.</p>
-          </div>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Complimentary audit delivered</div>
+          <p class="step-text">Before the call, you receive a full audit of your online presence and a 6-month roadmap — no commitment required.</p>
         </div>
       </div>
     </div>
 
-    <p class="apply-note">No obligation. No sales pressure. If we're not the right fit, we'll tell you — and we'll tell you why. Either way, you'll hear from us within 48 hours.</p>
+    <p class="apply-note">No obligation. No sales pressure. Either way, you'll hear from us within 2 business days.</p>
   </div>
 
-  <!-- RIGHT — Tally form embed -->
+  <!-- RIGHT — Tally Form -->
   <div class="apply-right">
-    <div class="form-heading">Tell us about your practice.</div>
-    <p class="form-sub">We review every application personally. Your answers help us understand where your practice is today and where it needs to go.</p>
-
     <div class="tally-wrap">
-      <!--
-        TALLY EMBED INSTRUCTIONS:
-        1. Build your Tally form at tally.so
-        2. Go to Share → Embed
-        3. Copy the iframe code
-        4. Replace the .tally-placeholder div below with the iframe
-        Example:
-        <iframe
-          data-tally-src="https://tally.so/embed/YOUR_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1"
-          loading="lazy"
-          width="100%"
-          height="600"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          title="OnEarth Agency Application">
-        </iframe>
-        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      -->
-      <div class="tally-placeholder">
-        <span class="tally-placeholder-icon">✦</span>
-        <div class="tally-placeholder-title">Application form coming soon</div>
-        <p class="tally-placeholder-text">The Tally application form will be embedded here. In the meantime, reach out directly.</p>
-        <a href="mailto:hello@onearthagency.com" style="display:inline-block;background:var(--terracotta);color:var(--white);padding:0.9rem 2rem;text-decoration:none;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;border-radius:2px;transition:background 0.2s;" onmouseenter="this.style.background='#382C23'" onmouseleave="this.style.background='#9C5D3C'">Email Us Directly</a>
-      </div>
+      <iframe
+        data-tally-src="https://tally.so/embed/WOKDva?alignLeft=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="800"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="OnEarth Agency Application">
+      </iframe>
+      <script>
+        var d=document,w="https://tally.so/widgets/embed.js",
+        v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};
+        if("undefined"!=typeof Tally)v();
+        else if(d.querySelector('script[src="'+w+'"]')==null){
+          var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);
+        }
+      </script>
     </div>
   </div>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-brand-name">OnEarth</div>
@@ -308,12 +352,14 @@
       <li><a href="work.html">Work</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="apply.html">Apply</a></li>
     </ul>
   </div>
   <div>
     <div class="footer-col-title">Contact</div>
     <ul class="footer-links">
       <li><a href="mailto:hello@onearthagency.com">hello@onearthagency.com</a></li>
+      <li><a href="apply.html">Apply for a Spot</a></li>
     </ul>
   </div>
   <div>
@@ -330,15 +376,36 @@
 </footer>
 
 <script>
-  const cursor = document.getElementById('cursor'); const ring = document.getElementById('cursorRing');
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
-  function animRing() { rx += (mx-rx)*0.1; ry += (my-ry)*0.1; ring.style.left = rx+'px'; ring.style.top = ry+'px'; requestAnimationFrame(animRing); }
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx+'px'; cursor.style.top = my+'px';
+  });
+  function animRing() {
+    rx += (mx-rx)*0.1; ry += (my-ry)*0.1;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(animRing);
+  }
   animRing();
   document.querySelectorAll('a,button').forEach(el => {
-    el.addEventListener('mouseenter', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='48px'; ring.style.height='48px'; });
-    el.addEventListener('mouseleave', () => { cursor.style.width='6px'; cursor.style.height='6px'; ring.style.width='32px'; ring.style.height='32px'; });
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width='12px'; cursor.style.height='12px';
+      ring.style.width='48px'; ring.style.height='48px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width='6px'; cursor.style.height='6px';
+      ring.style.width='32px'; ring.style.height='32px';
+    });
   });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+
 </body>
 </html>
