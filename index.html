@@ -62,6 +62,45 @@
     display: flex; align-items: center; justify-content: space-between;
     transition: all 0.4s ease;
   }
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #1C1712;
+    transition: all 0.3s ease;
+  }
+  .nav-burger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-burger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .nav-burger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-burger {
+      display: flex;
+      z-index: 1000;
+    }
+  }
 
   nav.scrolled {
     background: rgba(250,248,244,0.97);
@@ -283,8 +322,10 @@
   @media (max-width: 768px) {
     * { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
-    nav, nav.scrolled { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
+    nav, nav.scrolled { padding: 1.2rem 1.5rem; }
+    .nav-links { display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #FAF8F4; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 999; opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity 0.3s ease, transform 0.3s ease; }
+.nav-links.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+.nav-burger { display: flex; z-index: 1000; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left { padding: 5rem 1.5rem 3rem; }
     .hero-left::after { display: none; }
@@ -322,6 +363,11 @@
     <li><a href="about.html">About</a></li>
     <li><a href="apply.html" class="nav-apply">Apply for a Spot</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <section class="hero">
@@ -502,6 +548,15 @@
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
   const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:0.1});
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+<script>
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.querySelector('.nav-links');
+
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
 </script>
 </body>
 </html>
