@@ -55,11 +55,15 @@
     position: fixed; top: 0; left: 0; right: 0;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.5rem 4rem;
-    background: rgba(250,248,244,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
+    background: rgba(250,248,244,0.97);
+    z-index: 1002;
     border-bottom: 1px solid var(--cream);
   }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-burger span { display: block; width: 24px; height: 2px; background-color: #1C1712; transition: all 0.3s ease; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .nav-logo { text-decoration: none; display: flex; flex-direction: column; gap: 0.1rem; }
   .nav-logo-main {
     font-family: 'Cormorant Upright', serif;
@@ -86,6 +90,12 @@
     color: var(--white) !important;
     padding: 0.6rem 1.4rem !important;
     border-radius: 2px;
+  }
+
+  .nav-links.open .nav-cta {
+    background: none !important;
+    color: var(--charcoal) !important;
+    padding: 0 !important;
   }
   .nav-cta:hover { background: var(--charcoal) !important; color: var(--white) !important; }
 
@@ -234,8 +244,12 @@
   .reveal-delay-3 { transition-delay: 0.3s; }
 
   @media (max-width: 900px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
+    nav { padding: 1.2rem 1.5rem; z-index: 1002; }
+    .nav-burger { display: flex; z-index: 1002; position: relative; }
+    .nav-links { display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: #FAF8F4; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 1001; opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    .nav-links.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-links a { font-size: 1.1rem; color: var(--charcoal); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links .nav-cta { background: none !important; color: var(--charcoal) !important; padding: 0 !important; border-radius: 0; font-size: 1.1rem; }
     .page-hero { padding: 7rem 1.5rem 3rem; }
     .apply-section { grid-template-columns: 1fr; }
     .apply-left { padding: 3rem 1.5rem; border-right: none; border-bottom: 1px solid var(--cream); }
@@ -261,6 +275,11 @@
     <a href="about.html">About</a>
     <a href="apply.html" class="nav-cta">Apply for a Spot</a>
   </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- PAGE HERO -->
@@ -407,6 +426,14 @@
   }, {threshold: 0.1});
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+<script>
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.querySelector('.nav-links');
 
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
