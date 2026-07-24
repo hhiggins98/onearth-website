@@ -5,12 +5,12 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OnEarth Agency · Functional Medicine Marketing</title>
-<meta name="description" content="OnEarth Agency builds the online presence functional medicine practitioners deserve. Maximum 3 practices per city. Currently accepting applications.">
+<meta name="description" content="OnEarth Agency builds the online presence functional medicine practitioners deserve. Currently accepting applications.">
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://onearthagency.com/">
 <meta property="og:title" content="OnEarth Agency · Functional Medicine Marketing">
-<meta property="og:description" content="OnEarth Agency builds the online presence functional medicine practitioners deserve. Maximum 3 practices per city. Currently accepting applications.">
+<meta property="og:description" content="OnEarth Agency builds the online presence functional medicine practitioners deserve. Currently accepting applications.">
 <meta property="og:image" content="https://onearthagency.com/assets/images/social-share.png">
 <meta property="og:image:width" content="1122">
 <meta property="og:image:height" content="587">
@@ -169,6 +169,12 @@
     opacity: 0; animation: fadeUp 0.7s ease 0.7s forwards;
   }
 
+  .hero-founder {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--olive); font-weight: 400; margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s ease 0.8s forwards;
+  }
+
   .hero-actions {
     display: flex; gap: 1rem; flex-wrap: wrap;
     opacity: 0; animation: fadeUp 0.7s ease 0.9s forwards;
@@ -207,7 +213,7 @@
   .stats-band {
     border-top: 1px solid rgba(110,107,65,0.12);
     border-bottom: 1px solid rgba(110,107,65,0.12);
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: grid; grid-template-columns: repeat(3, 1fr);
     background: var(--cream-pale);
   }
 
@@ -271,7 +277,7 @@
 
   /* PROOF */
   .proof { padding: 10rem 5rem; background: var(--white); position: relative; }
-  .proof::before { content: '04'; position: absolute; left: 3rem; top: 4rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(110,107,65,0.04); line-height: 1; pointer-events: none; }
+  .proof::before { content: '03'; position: absolute; left: 3rem; top: 4rem; font-family: 'Cormorant Upright', serif; font-size: 14rem; font-weight: 300; color: rgba(110,107,65,0.04); line-height: 1; pointer-events: none; }
 
   .proof-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start; }
   .proof-h2 { font-family: 'Cormorant', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(--charcoal); line-height: 1.1; margin-bottom: 1.5rem; }
@@ -298,7 +304,7 @@
   .btn-light:hover { background: var(--terracotta); border-color: var(--terracotta); color: var(--white); }
 
   /* FOOTER */
-  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
+  footer { border-top: 1px solid rgba(110,107,65,0.12); padding: 4rem 5rem; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; background: var(--cream-pale); }
   .footer-brand-name { font-family: 'Cormorant Upright', serif; font-size: 1.3rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
   .footer-brand-sub { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem; }
   .footer-text { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); max-width: 260px; }
@@ -381,6 +387,7 @@
       <em>you most.</em>
     </h1>
     <p class="hero-sub">Most functional medicine practitioners built their reputation on results, not marketing. OnEarth bridges that gap — building the online presence that reflects the depth of your work, and the systems that bring the right patients through your door.</p>
+    <p class="hero-founder">Founded by Isa Higgins</p>
     <div class="hero-actions">
       <a href="apply.html" class="btn-primary">Apply for a Spot</a>
       <a href="services.html" class="btn-ghost">See How It Works</a>
@@ -394,7 +401,6 @@
       <div class="hero-float-label">Years in Functional Medicine Marketing</div>
     </div>
     <div class="hero-creds">
-      <span class="hero-cred">Max 3 Practices Per City</span>
       <span class="hero-cred">6-Month Implementation</span>
     </div>
   </div>
@@ -402,7 +408,6 @@
 
 <div class="stats-band">
   <div class="stat-item"><div class="stat-val">5+</div><div class="stat-label">Years in Functional Medicine Marketing</div></div>
-  <div class="stat-item"><div class="stat-val">3</div><div class="stat-label">Max Practices Per City</div></div>
   <div class="stat-item"><div class="stat-val">6mo</div><div class="stat-label">Full Implementation Timeline</div></div>
   <div class="stat-item"><div class="stat-val">Now</div><div class="stat-label">Accepting Applications</div></div>
 </div>
@@ -459,19 +464,6 @@
   </div>
 </section>
 
-<section class="exclusivity">
-  <div class="reveal">
-    <div class="section-eyebrow">How We Work</div>
-    <h2 class="excl-h2">Maximum three<br>practices<br><em>per city.</em></h2>
-  </div>
-  <div class="reveal reveal-delay-2">
-    <p class="excl-text">This isn't a marketing tactic. It's how the model works. When we take on a practice in a city, we're building their local authority — their rankings, their reputation, their visibility in that market. Taking on a fourth practice in the same city would work against every client we already serve.</p>
-    <div class="excl-rule"><p>"OnEarth works with a maximum of three practices per city. Once those spots are filled, the market is closed."</p></div>
-    <p class="excl-text">Once a market reaches capacity, it closes. New practices go on a waitlist. If you're reading this, your city may still be open.</p>
-    <a href="apply.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block">Check Your City</a>
-  </div>
-</section>
-
 <section class="proof">
   <div class="proof-inner">
     <div class="reveal">
@@ -503,7 +495,7 @@
   <div>
     <div class="footer-brand-name">OnEarth</div>
     <div class="footer-brand-sub">Functional Medicine Marketing</div>
-    <p class="footer-text">Building the online presence functional medicine practitioners deserve. Maximum 3 practices per city.</p>
+    <p class="footer-text">Building the online presence functional medicine practitioners deserve.</p>
   </div>
   <div>
     <div class="footer-col-title">Navigate</div>
@@ -519,13 +511,6 @@
     <ul class="footer-links">
       <li><a href="mailto:hello@onearthagency.com">hello@onearthagency.com</a></li>
       <li><a href="apply.html">Apply for a Spot</a></li>
-    </ul>
-  </div>
-  <div>
-    <div class="footer-col-title">Follow</div>
-    <ul class="footer-links">
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">Instagram</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
